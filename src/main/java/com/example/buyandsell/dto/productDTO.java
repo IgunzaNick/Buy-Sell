@@ -1,0 +1,59 @@
+package com.example.buyandsell.dto;
+
+import lombok.Data;
+
+@Data
+public class productDTO {
+	private Long id;
+	private String name;
+	private int categoryid;
+	private double price;
+	private Integer phonenumber;
+	private String description;
+	private String imageName;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getCategoryid() {
+		return categoryid;
+	}
+	public void setCategoryid(int categoryid) {
+		this.categoryid = categoryid;
+	}
+	public double getPrice() {
+		return price;
+	}
+	public void setPrice(double price) {
+		this.price = price;
+	}
+	public Integer getPhonenumber() {
+		return phonenumber;
+	}
+	public void setPhonenumber(Integer phonenumber) {
+		this.phonenumber = phonenumber;
+	}
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
+	public String getImageName() {
+		return imageName;
+	}
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
+	}
+
+	
+
+}
