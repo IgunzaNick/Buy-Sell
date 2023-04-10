@@ -9,14 +9,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.example.buyandsell.global.GlobalData;
 import com.example.buyandsell.model.Product;
 import com.example.buyandsell.service.ProductService;
+import com.example.buyandsell.service.SellerService;
 
 @Controller
 public class CartController {
 	@Autowired
 	ProductService productservice;
+	@Autowired
+	SellerService sellerservice;
 	@GetMapping("/addToCart/{id}")
 	public String addtoCart(@PathVariable int  id ) {
 		GlobalData.cart.add(productservice.getProductById(id).get());
+		
 		return "redirect:/shop";
 	}
 	@GetMapping("/cart")

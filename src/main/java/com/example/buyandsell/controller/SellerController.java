@@ -16,19 +16,19 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.buyandsell.dto.productDTO;
+import com.example.buyandsell.dto.sellerDTO;
 import com.example.buyandsell.model.Category;
-import com.example.buyandsell.model.Product;
+import com.example.buyandsell.model.SellerProduct;
 import com.example.buyandsell.service.CategoryService;
-import com.example.buyandsell.service.ProductService;
+import com.example.buyandsell.service.SellerService;
 
 @Controller
 public class SellerController {
-	public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/productImages";
+	public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/sellerImages";
 	@Autowired
 	CategoryService categoryservice;
 	@Autowired 
-	ProductService productservice;
+	SellerService sellerservice;
 	@GetMapping("/seller")
 	public String sellerpage() {
 		return "seller";
@@ -69,28 +69,28 @@ public class SellerController {
 	//product section
 	@GetMapping("/seller/products")
 	public String products(Model model) {
-		model.addAttribute("products", productservice.getallProduct());
+		model.addAttribute("products", sellerservice.getsellerproduct());
 		return "products";
 		
 	}
 	@GetMapping("/seller/products/add")
 	public String productAddGet(Model model) {
-		model.addAttribute("productDTO", new productDTO());
+		model.addAttribute("sellerDTO", new sellerDTO());
 		model.addAttribute("categories", categoryservice.getallcategory());
-		return "productsAdd";
+		return "seller";
 		
 	}
 	@PostMapping("/seller/products/add")
-	public String productAddPost(@ModelAttribute("productDTO")productDTO productDTO,@RequestParam("productImage")MultipartFile file,
+	public String productAddPost(@ModelAttribute("sellerDTO")sellerDTO sellerDTO,@RequestParam("sellerImage")MultipartFile file,
 			@RequestParam("imgName")String imgName) throws IOException{
 		
-		Product product = new Product();
-		product.setId(productDTO.getId());
-		product.setName(productDTO.getName());
-		product.setCategory(categoryservice.getCategoryById(productDTO.getCategoryid()).get());
-		product.setPrice(productDTO.getPrice());
-		product.setPhonenumber(productDTO.getPhonenumber());
-		product.setDescription(productDTO.getDescription());
+		SellerProduct product = new SellerProduct();
+		product.setId(sellerDTO.getId());
+		product.setName(sellerDTO.getName());
+		product.setCategory(categoryservice.getCategoryById(sellerDTO.getCategoryid()).get());
+		product.setPrice(sellerDTO.getPrice());
+		product.setPhonenumber(sellerDTO.getPhonenumber());
+		product.setAccountDescription(sellerDTO.getAccountDescription());
 		String imageUUID;
 		if(!file.isEmpty()) {
 			imageUUID = file.getOriginalFilename();
@@ -99,31 +99,31 @@ public class SellerController {
 		}else {
 			imageUUID = imgName;
 		}
-		product.setImageName(imageUUID);
+		product.setImagename(imageUUID);
 		
-		productservice.addProduct(product);
+		sellerservice.addsellerproduct(product);
 		
 		return "redirect:/seller/products";
 	}
 	@GetMapping("/seller/product/delete/{id}")
 	public String deleteProduct(@PathVariable long id) {
-		productservice.removeProductById(id);
+		sellerservice.removeproductbyid(id);
 		return "redirect:/seller/products";
 		
 	}
 	@GetMapping("/seller/product/update/{id}")
 	public String updateProductGet(@PathVariable long id, Model model) {
-		Product product = productservice.getProductById(id).get();
-		productDTO productDTO = new productDTO();
-		productDTO.setId(product.getId());
-		productDTO.setName(product.getName());
-		productDTO.setCategoryid((product.getCategory().getId()));
-		productDTO.setPrice(product.getPrice());
-		productDTO.setPhonenumber((product.getPhonenumber()));
-		productDTO.setDescription((product.getDescription()));
-		productDTO.setImageName(product.getImageName());
+		SellerProduct product = sellerservice.getProductById(id).get();
+		sellerDTO sellerproductDTO = new sellerDTO();
+		sellerproductDTO.setId(product.getId());
+		sellerproductDTO.setName(product.getName());
+		sellerproductDTO.setCategoryid((product.getCategory().getId()));
+		sellerproductDTO.setPrice(product.getPrice());
+		sellerproductDTO.setPhonenumber((product.getPhonenumber()));
+		sellerproductDTO.setAccountDescription((product.getAccountDescription()));
+		sellerproductDTO.setImagename(product.getImagename());
 		model.addAttribute("categories",categoryservice.getallcategory());
-		model.addAttribute("productDTO",productDTO);
-		return "productsAdd";
+		model.addAttribute("sellerDTO",sellerproductDTO);
+		return "seller";
 	}
 }

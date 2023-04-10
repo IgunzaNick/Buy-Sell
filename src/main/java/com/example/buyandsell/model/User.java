@@ -43,11 +43,11 @@ public class User {
 	
 	@ManyToMany(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
 	@JoinTable(
-			name="user",
-			
-					
-	joinColumns = @JoinColumn (name="ROLE_ID", referencedColumnName = "ID")
-			)
+			name="users_roles",
+						
+	joinColumns = {@JoinColumn (name="USER_ID", referencedColumnName = "ID")},
+	inverseJoinColumns = {@JoinColumn(name="ROLE_ID", referencedColumnName="ROLE_ID")}
+	)
 					
 			
 					
@@ -131,9 +131,13 @@ public class User {
 	}
 
 
+
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
+	
+
+
 
 
 

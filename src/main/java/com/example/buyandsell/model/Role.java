@@ -48,23 +48,8 @@ public class Role {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Role(Integer id) {
-		
-		this.role_id = id;
-		
-	}
-public Role( @NotEmpty String name) {
-		
-		this.name = name;
-	}
-	public Role(Integer id, @NotEmpty String name) {
-		
-		this.role_id = id;
-		this.name = name;
-	}
-	public Role() {
-		
-	}
+
+
 	
 
 	

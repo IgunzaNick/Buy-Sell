@@ -1,51 +1,39 @@
 package com.example.buyandsell.model;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 import lombok.Data;
 
 @Entity
 @Data
+@Table(name = "sellerproduct")
 public class SellerProduct {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private int id;
+	private Long id;
 	private String name;
 	private int price;
 	private int phonenumber;
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="category_id", referencedColumnName = "category_id")
 	private Category category;
 	private String AccountDescription;
 	private String link;
 	private String email;
 	private String password;
 	private String imagename;
-	public SellerProduct(int id, String name, int price, int phonenumber, Category category, String accountDescription,
-			String link, String email, String password, String imagename) {
-		
-		this.id = id;
-		this.name = name;
-		this.price = price;
-		this.phonenumber = phonenumber;
-		this.category = category;
-	               AccountDescription = accountDescription;
-		this.link = link;
-		this.email = email;
-		this.password = password;
-		this.imagename = imagename;
-	}
-	public String getImagename() {
-		return imagename;
-	}
-	public void setImagename(String imagename) {
-		this.imagename = imagename;
-	}
-	public int getId() {
+	
+	public long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -96,12 +84,15 @@ public class SellerProduct {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-
-	public SellerProduct() {
-		super();
-		
+	public String getImagename() {
+		return imagename;
 	}
+	public void setImagename(String imagename) {
+		this.imagename = imagename;
+	}
+
 	
+
 	
 
 }

@@ -1,23 +1,22 @@
 package com.example.buyandsell.dto;
 
-import com.example.buyandsell.model.Category;
-
 import lombok.Data;
 
 @Data
 public class sellerDTO {
-	private int id;
+	private Long id;
 	private String name;
 	private int price;
 	private int phonenumber;
-	private Category category;
+	private int categoryid;
 	private String AccountDescription;
 	private String link;
 	private String imagename;
-	public int getId() {
+	
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getName() {
@@ -38,11 +37,12 @@ public class sellerDTO {
 	public void setPhonenumber(int phonenumber) {
 		this.phonenumber = phonenumber;
 	}
-	public Category getCategory() {
-		return category;
+
+	public int getCategoryid() {
+		return categoryid;
 	}
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setCategoryid(int categoryid) {
+		this.categoryid = categoryid;
 	}
 	public String getAccountDescription() {
 		return AccountDescription;

@@ -15,14 +15,14 @@ public class SellerService {
 	public List<SellerProduct>getsellerproduct(){
 		return sellerrepository.findAll();
 	}
-	public void addsellerproduct(SellerProduct productseller) {
-		sellerrepository.save(productseller);
+	public void addsellerproduct(SellerProduct product) {
+		sellerrepository.save(product);
 		
 	}
-	public void removeproductbyid(int id) {
+	public void removeproductbyid(long id) {
 		sellerrepository.deleteById(id);
 	}
-	public Optional<SellerProduct> getProductById(int id){
+	public Optional<SellerProduct> getProductById(long id){
 		return sellerrepository.findById(id);
 		
 	}

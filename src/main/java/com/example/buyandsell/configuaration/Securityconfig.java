@@ -26,9 +26,9 @@ public class Securityconfig extends WebSecurityConfigurerAdapter {
 		http
 				.authorizeRequests()
 				.antMatchers("/", "/register","/h2-console/**").permitAll()
-				/*.antMatchers("/admin/**").hasRole("ADMIN")
+				.antMatchers("/admin/**","/shop","/seller").hasRole("ADMIN")
 				.antMatchers("/shop").hasRole("BUYER")
-				.antMatchers("/seller").hasRole("SELLER")*/
+				.antMatchers("/seller").hasRole("SELLER")
 				.anyRequest()
 				.authenticated()
 				.and()

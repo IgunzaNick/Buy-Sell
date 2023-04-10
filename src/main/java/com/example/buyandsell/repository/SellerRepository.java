@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.example.buyandsell.model.SellerProduct;
 
 @Repository
-public interface SellerRepository extends JpaRepository<SellerProduct,Integer> {
+public interface SellerRepository extends JpaRepository<SellerProduct,Long> {
 	List<SellerProduct> findAllByCategory_Id(int id);
 
 }

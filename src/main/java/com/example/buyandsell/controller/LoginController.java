@@ -44,6 +44,7 @@ public class LoginController {
 		String password = user.getPassword();
 		user.setPassword(bCryptPasswordEncoder.encode(password));
 		List<Role> roles = new ArrayList<>();
+		roles.add(rolerepository.findById(2).get());
 		user.setRoles(roles);
 		userrepository.save(user);
 		request.login(user.getEmail(), password);
