@@ -7,6 +7,7 @@ public class BuyerPaidDTO {
 	private String email;
 	private String password;
 	private String name;
+	private String phonenumber;
 	public String getEmail() {
 		return email;
 	}
@@ -24,6 +25,16 @@ public class BuyerPaidDTO {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	public void setPhoneNumber(String phonenumber) {
+		
+		this.phonenumber = phonenumber;
+	}
+	
+	public String getPhoneNumber() {
+		
+		return phonenumber;
+		
 	}
 	
 	

@@ -1,5 +1,7 @@
 package com.example.buyandsell.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -21,8 +24,8 @@ public class SellerProduct {
 	private String name;
 	private int price;
 	private int phonenumber;
-	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name="category_id", referencedColumnName = "category_id")
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Category category;
 	private String AccountDescription;
 	private String link;
@@ -30,12 +33,10 @@ public class SellerProduct {
 	private String password;
 	private String imagename;
 	
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(long id) {
-		this.id = id;
-	}
+
 	public String getName() {
 		return name;
 	}
@@ -54,11 +55,16 @@ public class SellerProduct {
 	public void setPhonenumber(int phonenumber) {
 		this.phonenumber = phonenumber;
 	}
+
+
 	public Category getCategory() {
 		return category;
 	}
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public String getAccountDescription() {
 		return AccountDescription;
@@ -91,8 +97,6 @@ public class SellerProduct {
 		this.imagename = imagename;
 	}
 
-	
 
-	
 
 }

@@ -24,6 +24,7 @@ import com.example.buyandsell.service.SellerService;
 
 @Controller
 public class SellerController {
+	
 	public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/sellerImages";
 	@Autowired
 	CategoryService categoryservice;
@@ -81,13 +82,13 @@ public class SellerController {
 		
 	}
 	@PostMapping("/seller/products/add")
-	public String productAddPost(@ModelAttribute("sellerDTO")sellerDTO sellerDTO,@RequestParam("sellerImage")MultipartFile file,
-			@RequestParam("imgName")String imgName) throws IOException{
+	public String productAddPost(@ModelAttribute("sellerDTO")sellerDTO sellerDTO,@RequestParam("sellerImage") MultipartFile file,
+			@RequestParam("imgName") String imgName) throws IOException{
 		
 		SellerProduct product = new SellerProduct();
 		product.setId(sellerDTO.getId());
 		product.setName(sellerDTO.getName());
-		product.setCategory(categoryservice.getCategoryById(sellerDTO.getCategoryid()).get());
+		//product.setCategory(categoryservice.getCategoryById(sellerDTO.getCategoryid()).get());
 		product.setPrice(sellerDTO.getPrice());
 		product.setPhonenumber(sellerDTO.getPhonenumber());
 		product.setAccountDescription(sellerDTO.getAccountDescription());
