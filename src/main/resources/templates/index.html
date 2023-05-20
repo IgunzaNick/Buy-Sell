@@ -34,19 +34,10 @@
                     <a class="nav-link" th:href="@{/}" href="#">home</a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/shop}" href="#">shop</a>
-                </li>
-                <li class="nav-item active">
                     <a class="nav-link" sec:authorize="isAnonymous()" th:href="@{/login}" href="#">login</a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" sec:authorize="isAuthenticated()" th:href="@{/logout}" href="#">logout</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/cart}" href="#">cart</a>
-                </li>
-                <li class="nav-item active">
-                    <span class="nav-link" th:text="${cartCount}">0</span>
                 </li>
             </ul>
 
@@ -60,14 +51,9 @@
 </nav>
 
 <div class="content">
-<h1> Welcome to Buy and Sell</h1>
-		<p> Get awesome deals on the amaizing account<br> packages that are available on offer.</p>
-<a href="#" th:href="@{/shop}">
-<button type="button"><span></span>  Buyer  </button>
-</a>
-<a href="#" th:href="@{/seller}">
-<button type="button"><span></span>  Seller </button>
-</a>
+<h1> Welcome to CodingDrips</h1>
+		<p> Codingdrips ensures easier learning , <br> We offer courses in HTML, CSS, JavaScript, Java, Reactjs .</p>
+
 </div>
 		
 
